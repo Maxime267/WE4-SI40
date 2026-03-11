@@ -1,27 +1,25 @@
-Projet pour les UE WE4A, WE4B et SI40
+#Projet pour les UE WE4A, WE4B et SI40
 
-Thème du site: Site de coaching (dev perso : réalisé ses rêves / passer à l'action)
+Thème du site : **Site de coaching (développement personnel : réaliser ses rêves / passer à l'action)**
 
-Vous pouvez ajouter tous ce que vous voulez mais l'idée c'est
+Vous pouvez ajouter tout ce que vous voulez, mais l’idée principale est la suivante :
 
-Objectif principal: le client doit être amener à prendre un rdv preliminaire (gratuit)
+**Objectif principal** : Le client doit être incité à prendre un rendez-vous préliminaire gratuit.
 
-Fonctionnalité voulu (peu évloué): 
+#Fonctionnalités souhaitées (niveau basique)
 
-Acceuil
+##Accueil :
+Mise en avant du besoin du client
+Utilisation de témoignages d’anciens clients
 
-Mise en avant du besoin client
-Utilisation de temoignage d'ancien client
+##Réservation de rendez-vous
+Possibilité de réserver un rendez-vous classique
+Possibilité de réserver un rendez-vous préliminaire gratuit sans avoir besoin de se connecter → Cette fonctionnalité doit être mise en avant (objectif : le client arrive sur le site et peut réserver facilement)
 
-Réservation de rdv (séance classique)
-Peut réserver un rdv sans se log-in (rdv preliminaire)  ---> doit être mis en avant (objectif: le client arrive sur le site et doit pouvoir réserver facilement)
-
-
-Fonctionnalité UE:
+#Fonctionnalités liées aux UE
 
 Inscription
-Connection
-Different user : Admin, classique_user ect...
 
+Connexion
 
-
+Différents types d’utilisateurs : Admin, utilisateur classique, etc.
