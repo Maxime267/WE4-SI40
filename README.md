@@ -9,11 +9,15 @@ Vous pouvez ajouter tout ce que vous voulez, mais l’idée principale est la su
 # Fonctionnalités souhaitées (niveau basique)
 
 ## Accueil :
+
 Mise en avant du besoin du client
+
 Utilisation de témoignages d’anciens clients
 
 ## Réservation de rendez-vous
+
 Possibilité de réserver un rendez-vous classique
+
 Possibilité de réserver un rendez-vous préliminaire gratuit sans avoir besoin de se connecter → Cette fonctionnalité doit être mise en avant (objectif : le client arrive sur le site et peut réserver facilement)
 
 # Fonctionnalités liées aux UE
@@ -23,3 +27,5 @@ Inscription
 Connexion
 
 Différents types d’utilisateurs : Admin, utilisateur classique, etc.
+
+ect...
