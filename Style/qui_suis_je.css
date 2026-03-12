@@ -1,0 +1,225 @@
+/* ===========================
+   STYLES — PAGE QUI SUIS-JE
+   =========================== */
+
+/* ---- SECTION INTRO ---- */
+.about-intro {
+    padding: 80px 20px;
+    background: white;
+}
+
+.about-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+
+.about-text h2 {
+    font-size: 32px;
+    color: #1a365d;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+}
+
+.about-tagline {
+    color: #38b2ac;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 20px !important;
+    letter-spacing: 0.5px;
+}
+
+.about-text p {
+    color: #4a5568;
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.cta-link {
+    display: inline-block;
+    margin-top: 16px;
+    color: #38b2ac;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.cta-link:hover {
+    color: #2d7a6b;
+    letter-spacing: 0.5px;
+}
+
+
+/* ---- SECTION VALEURS ---- */
+.valeurs {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    text-align: center;
+}
+
+.valeurs h2 {
+    font-size: 32px;
+    color: #1a365d;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.valeur-card {
+    text-align: center;
+}
+
+.valeur-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+
+/* ---- SECTION PARCOURS / TIMELINE ---- */
+.parcours {
+    padding: 80px 20px;
+    background: white;
+    text-align: center;
+}
+
+.parcours h2 {
+    font-size: 32px;
+    color: #1a365d;
+    margin-bottom: 50px;
+    font-weight: 600;
+}
+
+.timeline {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Ligne verticale du timeline */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 80px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #667eea, #38b2ac);
+}
+
+.timeline-item {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    text-align: left;
+    position: relative;
+}
+
+.timeline-year {
+    width: 60px;
+    flex-shrink: 0;
+    font-weight: 700;
+    color: #38b2ac;
+    font-size: 15px;
+    padding-top: 4px;
+}
+
+.timeline-content {
+    background: #f7fafc;
+    border-radius: 10px;
+    padding: 20px 25px;
+    flex: 1;
+    border-left: 3px solid #38b2ac;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 16px rgba(56, 178, 172, 0.15);
+}
+
+.timeline-content h3 {
+    color: #1a365d;
+    margin: 0 0 8px 0;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.timeline-content p {
+    color: #4a5568;
+    margin: 0;
+    font-size: 15px;
+}
+
+/* Point rond sur la ligne */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 74px;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #38b2ac;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px #38b2ac;
+}
+
+
+/* ---- SECTION CTA FINAL ---- */
+.cta-section {
+    padding: 100px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #38b2ac 100%);
+    color: white;
+}
+
+.cta-section h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cta-section p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.cta-section .cta {
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+/* ---- RESPONSIVE MOBILE ---- */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        gap: 10px;
+        padding-left: 40px;
+    }
+
+    .timeline-item::before {
+        left: 14px;
+    }
+
+    .timeline-year {
+        width: auto;
+    }
+}

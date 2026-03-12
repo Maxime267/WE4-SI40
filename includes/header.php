@@ -5,8 +5,10 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Rendez-vos Rêve Réalité</title>
-    <link rel="stylesheet" href="../style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site de coaching personnel - Réalisez vos rêves et passez à l'action.">
+    <title>Rendez vos Rêves Réalité - Coaching</title>
+    <link rel="stylesheet" href="/WE4-SI40/style.css">
 </head>
 
 <body>
@@ -19,9 +21,9 @@
 
 <nav class="menu">
 
-<a href="/Coaching/index.php">Accueil</a>
-<a href="/Coaching/index.php">Qui suis-je</a>
-<a href="/Coaching/index.php" class="btn-rdv">Prendre RDV</a>
+<a href="/WE4-SI40/index.php">Accueil</a>
+<a href="/WE4-SI40/Qui_suis_je.php">Qui suis-je</a>
+<a href="/WE4-SI40/Rdv.php" class="btn-rdv">Prendre RDV</a>
 
 </nav>
 
