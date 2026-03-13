@@ -1,0 +1,68 @@
+/* ── Deux champs côte à côte ── */
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    min-width: 0; /* évite le dépassement sur les petits écrans */
+}
+
+@media (max-width: 480px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/* ── Conteneur du champ mot de passe ── */
+.password-wrapper {
+    position: relative;    /* ancre le bouton œil en absolu */
+    display: flex;
+    align-items: center;   /* centre verticalement l'input et le bouton */
+}
+
+/* L'input prend toute la largeur avec de l'espace à droite pour le bouton */
+.password-wrapper input[type="password"] {
+    width: 100%;
+    padding-right: 2.8rem;
+    box-sizing: border-box;
+}
+
+/* ── Bouton œil ── */
+.btn-eye {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.btn-eye:hover {
+    color: #38b2ac;
+    background: none;
+}
+
+.btn-eye:active {
+    background: none;
+}
+
+/* Icône SVG */
+.eye-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    display: block;
+}
+
+/* Quand le mot de passe est visible */
+.btn-eye.active {
+    color: #38b2ac;
+}

@@ -1,5 +1,15 @@
-<?php include("includes/header.php"); ?>
+<?php
+session_start();
+$succes = $_SESSION['succes'] ?? '';
+unset($_SESSION['succes']);
+include("includes/header.php");
+?>
 
+<?php if ($succes): ?>
+    <div style="background:#f0fff4; border:1px solid #68d391; border-radius:8px; padding:12px 20px; margin:20px 40px; color:#276749; font-size:14px; font-weight:500;">
+        ✅ <?php echo htmlspecialchars($succes); ?>
+    </div>
+<?php endif; ?>
 
 <section class="services">
 
