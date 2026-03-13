@@ -4,8 +4,8 @@
 
 /* ---- SECTION INTRO ---- */
 .about-intro {
-    padding: 80px 20px;
-    background: white;
+    padding: 80px 20px 100px;
+    background: rgb(255, 255, 255);
 }
 
 .about-container {
