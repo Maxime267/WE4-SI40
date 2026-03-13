@@ -1,7 +1,8 @@
 <?php include 'includes/header.php'; ?>
 
 <!-- CSS spécifique à cette page -->
-<link rel="stylesheet" href="/WE4-SI40/qui_suis_je.css">
+<link rel="stylesheet" href="Style/style.css">
+<link rel="stylesheet" href="Style/qui_suis_je.css">
 
 <main>
 
@@ -17,7 +18,7 @@
         <div class="about-container">
 
             <div class="about-avatar">
-                <span class="avatar-initials">SC</span>
+                <span class="avatar-initials"></span>
             </div>
 
             <div class="about-text">
