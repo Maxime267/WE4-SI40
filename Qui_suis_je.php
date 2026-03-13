@@ -1,7 +1,9 @@
-<?php include 'includes/header.php'; ?>
+<?php
+session_start();
+include 'includes/header.php';
+?>
 
 <!-- CSS spécifique à cette page -->
-<link rel="stylesheet" href="Style/style.css">
 <link rel="stylesheet" href="Style/qui_suis_je.css">
 
 <main>
