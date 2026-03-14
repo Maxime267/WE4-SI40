@@ -62,6 +62,17 @@ body {
     box-shadow: 0 4px 12px rgba(56, 178, 172, 0.4);
 }
 
+/* Variante dorée pour la séance gratuite (visiteurs non connectés) */
+.btn-rdv--gratuit {
+    background: linear-gradient(135deg, #d69e2e 0%, #b7791f 100%) !important;
+    box-shadow: 0 2px 8px rgba(214, 158, 46, 0.35) !important;
+}
+
+.btn-rdv--gratuit:hover {
+    background: linear-gradient(135deg, #b7791f 0%, #975a16 100%) !important;
+    box-shadow: 0 4px 14px rgba(214, 158, 46, 0.5) !important;
+}
+
 /* HERO (ajouté pour cohérence, même si absent dans index.php actuel) */
 .hero {
     text-align: center;

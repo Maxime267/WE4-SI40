@@ -1,0 +1,90 @@
+/* ---- BANNIÈRE CTA SÉANCE GRATUITE (index.php) ---- */
+.cta-gratuit-banner {
+    background: linear-gradient(135deg, #1a365d 0%, #2d3748 60%, #2d7a6b 100%);
+    padding: 70px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-gratuit-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(56,178,172,0.15) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 30%, rgba(255,255,255,0.04) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.cta-gratuit-banner__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.cta-gratuit-banner__badge {
+    display: inline-block;
+    background: rgba(56, 178, 172, 0.25);
+    color: #81e6d9;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 5px 16px;
+    border-radius: 999px;
+    letter-spacing: 0.6px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(56, 178, 172, 0.4);
+}
+
+.cta-gratuit-banner h2 {
+    color: white;
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    line-height: 1.25;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.highlight-green {
+    color: #68d391;
+}
+
+.cta-gratuit-banner p {
+    color: rgba(255,255,255,0.85);
+    font-size: 17px;
+    margin: 0 0 30px;
+    line-height: 1.7;
+}
+
+.cta-banner-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #38b2ac, #2d7a6b);
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 16px 40px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(56,178,172,0.4);
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+}
+
+.cta-banner-btn:hover {
+    background: linear-gradient(135deg, #2d7a6b, #1e5a4a);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(56,178,172,0.5);
+}
+
+.cta-banner-note {
+    font-size: 13px !important;
+    color: rgba(255,255,255,0.5) !important;
+    margin: 16px 0 0 !important;
+    letter-spacing: 0.3px;
+}
+
+@media (max-width: 768px) {
+    .cta-gratuit-banner h2 { font-size: 26px; }
+    .cta-gratuit-banner p  { font-size: 15px; }
+    .cta-banner-btn        { font-size: 16px; padding: 14px 28px; }
+}

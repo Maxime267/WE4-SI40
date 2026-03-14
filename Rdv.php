@@ -4,6 +4,30 @@ session_start();
 // ✅ Connexion à la base de données
 require_once 'db.php';
 
+// 🔒 Vérifier que l'utilisateur est connecté
+if (empty($_SESSION['utilisateur_id'])) {
+    // Sauvegarder l'URL de destination pour rediriger après login
+    $_SESSION['redirect_after_login'] = '/Rdv.php';
+    header('Location: /Auth/connexion.php');
+    exit;
+}
+
+// ✅ Récupérer les informations de l'utilisateur connecté
+$userId = $_SESSION['utilisateur_id'];
+$stmt = $pdo->prepare("SELECT nom, prenom, email FROM utilisateur WHERE id_utilisateur = ?");
+$stmt->execute([$userId]);
+$userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$userInfo) {
+    // Session invalide, déconnecter
+    session_destroy();
+    header('Location: /Auth/connexion.php');
+    exit;
+}
+
+$userName  = $userInfo['prenom'] . ' ' . $userInfo['nom'];
+$userEmail = $userInfo['email'];
+
 // ✅ Générer un token CSRF pour la sécurité
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -19,19 +43,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         $message = '❌ Erreur de sécurité : token invalide.';
     } else {
-        // Récupérer et nettoyer les données
-        $name = trim($_POST['name'] ?? '');
-        $email = trim($_POST['email'] ?? '');
-        $phone = trim($_POST['phone'] ?? '');
-        $date = $_POST['date'] ?? '';
-        $time = $_POST['time'] ?? '';
+        // Les infos nom/email viennent du compte connecté (non modifiables)
+        $name        = $userName;
+        $email       = $userEmail;
+        $phone       = trim($_POST['phone'] ?? '');
+        $date        = $_POST['date'] ?? '';
+        $time        = $_POST['time'] ?? '';
         $userMessage = trim($_POST['message'] ?? '');
 
         // ✅ Validation
-        if (empty($name) || empty($email) || empty($date) || empty($time)) {
-            $message = '❌ Tous les champs obligatoires doivent être remplis.';
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $message = '❌ Adresse email invalide.';
+        if (empty($date) || empty($time)) {
+            $message = '❌ Veuillez choisir une date et une heure.';
         } else {
             try {
                 // ✅ Vérifier que le créneau n'est pas déjà réservé
@@ -41,20 +63,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($stmt->fetchColumn() > 0) {
                     $message = '❌ Ce créneau est déjà réservé !';
                 } else {
-                    // ✅ Insérer le rendez-vous
+                    // ✅ Insérer le rendez-vous avec le user_id
                     $stmt = $pdo->prepare(
-                            "INSERT INTO appointments (name, email, phone, date, time, message, created_at) 
-                         VALUES (?, ?, ?, ?, ?, ?, NOW())"
+                        "INSERT INTO appointments (user_id, name, email, phone, date, time, message, created_at)
+                         VALUES (?, ?, ?, ?, ?, ?, ?, NOW())"
                     );
 
-                    if ($stmt->execute([$name, $email, $phone, $date, $time, $userMessage])) {
+                    if ($stmt->execute([$userId, $name, $email, $phone, $date, $time, $userMessage])) {
                         $message = '✅ Rendez-vous réservé avec succès ! Un email de confirmation sera envoyé.';
                         $messageType = 'success';
 
-                        // Nettoyer les champs
-                        $name = $email = $phone = $date = $time = $userMessage = '';
+                        // Nettoyer les champs de saisie
+                        $date = $time = $phone = $userMessage = '';
 
-                        // Régénérer le token
+                        // Régénérer le token CSRF
                         $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
                     }
                 }
@@ -92,12 +114,6 @@ for ($i = 0; $i < 30; $i++) {
 }
 ?>
 
-
-
-
-
-
-
 <?php include 'includes/header.php'; ?>
 
 <main>
@@ -108,27 +124,28 @@ for ($i = 0; $i < 30; $i++) {
 
     <section class="contact">
         <h2>Formulaire de Réservation</h2>
+
         <?php if ($message): ?>
-            <p style="color: <?php echo strpos($message, 'succès') !== false ? 'green' : 'red'; ?>;"><?php echo $message; ?></p>
+            <p style="color: <?php echo $messageType === 'success' ? 'green' : 'red'; ?>;">
+                <?php echo $message; ?>
+            </p>
         <?php endif; ?>
+
+        <!-- ✅ Info utilisateur connecté (lecture seule) -->
+        <div style="background: #f0fff4; border: 1px solid #68d391; border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; color: #276749; font-size: 14px;">
+            👤 Connecté en tant que : <strong><?php echo htmlspecialchars($userName); ?></strong>
+            (<?php echo htmlspecialchars($userEmail); ?>)
+        </div>
 
         <form method="POST" action="">
             <!-- ✅ Token CSRF caché -->
             <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
 
+            <!-- ✅ Champ téléphone optionnel -->
             <div class="form-group">
-                <label for="name">Nom :</label>
-                <input type="text" id="name" name="name" maxlength="100" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" maxlength="100" required>
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Téléphone (optionnel) :</label>
-                <input type="tel" id="phone" name="phone" maxlength="20">
+                <label for="phone">📞 Téléphone (optionnel) :</label>
+                <input type="tel" id="phone" name="phone" maxlength="20"
+                       value="<?php echo htmlspecialchars($phone ?? ''); ?>">
             </div>
 
             <!-- ✅ Calendrier visuel -->
@@ -136,6 +153,7 @@ for ($i = 0; $i < 30; $i++) {
                 <label for="date">📅 Choisissez une date :</label>
                 <input type="date" id="date" name="date"
                        min="<?php echo htmlspecialchars($currentDate); ?>"
+                       value="<?php echo htmlspecialchars($date ?? ''); ?>"
                        required
                        onchange="updateTimes()">
             </div>
@@ -150,16 +168,14 @@ for ($i = 0; $i < 30; $i++) {
 
             <div class="form-group">
                 <label for="message">💬 Message (optionnel) :</label>
-                <textarea id="message" name="message" maxlength="500" rows="4"></textarea>
+                <textarea id="message" name="message" maxlength="500" rows="4"><?php echo htmlspecialchars($userMessage ?? ''); ?></textarea>
             </div>
 
             <button type="submit" class="cta">✅ Réserver mon créneau</button>
         </form>
 
-
         <h3>Créneaux Disponibles (Calendrier Simplifié)</h3>
         <p>Sélectionnez une date ci-dessus pour voir les heures libres.</p>
-        <!-- Ici, vous pourriez intégrer FullCalendar pour un vrai calendrier visuel -->
     </section>
 </main>
 
