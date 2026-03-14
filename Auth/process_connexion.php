@@ -54,6 +54,10 @@ $_SESSION['utilisateur_id'] = $utilisateur['id_utilisateur'];
 $_SESSION['email']           = $email;
 $_SESSION['succes']          = "Bienvenue, " . htmlspecialchars($utilisateur['prenom']) . " ! Vous êtes connecté(e).";
 
-header('Location: ../dashboard.php');
+// ✅ Rediriger vers la page demandée avant le login (ex: Rdv.php), sinon tableau de bord
+$redirect = $_SESSION['redirect_after_login'] ?? '../dashboard.php';
+unset($_SESSION['redirect_after_login']);
+
+header('Location: ' . $redirect);
 exit;
 ?>

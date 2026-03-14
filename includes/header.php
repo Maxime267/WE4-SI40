@@ -29,11 +29,11 @@ $connecte = !empty($_SESSION['utilisateur_id']);
 
             <?php if ($connecte): ?>
                 <a href="/dashboard.php">Mon profil</a>
+                <a href="/Rdv.php" class="btn-rdv">Prendre RDV</a>
             <?php else: ?>
                 <a href="/Auth/connexion.php">Connexion</a>
+                <a href="/RdvGratuit.php" class="btn-rdv btn-rdv--gratuit">🎁 Séance gratuite</a>
             <?php endif; ?>
-
-            <a href="/Rdv.php" class="btn-rdv">Prendre RDV</a>
 
         </nav>
 

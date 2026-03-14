@@ -1,0 +1,178 @@
+/* ============================================================
+   RDV GRATUIT — styles spécifiques à la page séance découverte
+   ============================================================ */
+
+/* ---- HERO ---- */
+.hero-gratuit {
+    text-align: center;
+    padding: 90px 20px 80px;
+    background: linear-gradient(135deg, #1a365d 0%, #2d7a6b 50%, #38b2ac 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-gratuit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 20%, rgba(255,255,255,0.04) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-gratuit__badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 6px 18px;
+    border-radius: 999px;
+    letter-spacing: 0.5px;
+    margin-bottom: 22px;
+    border: 1px solid rgba(255,255,255,0.35);
+    backdrop-filter: blur(4px);
+}
+
+.hero-gratuit h2 {
+    font-size: 44px;
+    font-weight: 700;
+    margin: 0 0 18px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    line-height: 1.2;
+}
+
+.hero-gratuit p {
+    max-width: 620px;
+    margin: 0 auto 36px;
+    font-size: 19px;
+    font-weight: 300;
+    opacity: 0.92;
+    line-height: 1.7;
+}
+
+.cta-gratuit-btn {
+    display: inline-block;
+    background: white;
+    color: #1a365d;
+    font-weight: 700;
+    font-size: 17px;
+    padding: 15px 36px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+}
+
+.cta-gratuit-btn:hover {
+    background: #f0fff4;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* ---- AVANTAGES ---- */
+.avantages-gratuit {
+    padding: 70px 20px;
+    background: #f7fafc;
+    text-align: center;
+}
+
+.avantages-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.avantage-item {
+    background: white;
+    border-radius: 14px;
+    padding: 30px 24px;
+    width: 210px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.avantage-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 28px rgba(56, 178, 172, 0.15);
+}
+
+.avantage-icon {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 14px;
+}
+
+.avantage-item h3 {
+    font-size: 16px;
+    color: #1a365d;
+    font-weight: 700;
+    margin: 0 0 8px;
+}
+
+.avantage-item p {
+    font-size: 14px;
+    color: #4a5568;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ---- MESSAGE FEEDBACK ---- */
+.form-message {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.form-message.success {
+    background: #f0fff4;
+    border: 1px solid #68d391;
+    color: #276749;
+}
+
+.form-message.error {
+    background: #fff5f5;
+    border: 1px solid #fc8181;
+    color: #c53030;
+}
+
+/* ---- BOUTON PRINCIPAL ---- */
+.cta-gratuit {
+    width: 100%;
+    background: linear-gradient(135deg, #38b2ac 0%, #2d7a6b 100%);
+    color: white;
+    padding: 16px;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(56, 178, 172, 0.35);
+    letter-spacing: 0.3px;
+    margin-top: 10px;
+}
+
+.cta-gratuit:hover {
+    background: linear-gradient(135deg, #2d7a6b 0%, #1e5a4a 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(56, 178, 172, 0.45);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 768px) {
+    .hero-gratuit h2 { font-size: 30px; }
+    .hero-gratuit p  { font-size: 16px; }
+    .avantages-grid  { gap: 20px; }
+    .avantage-item   { width: 100%; max-width: 340px; }
+}
