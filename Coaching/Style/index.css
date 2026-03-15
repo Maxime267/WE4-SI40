@@ -1,7 +1,7 @@
-/* ---- BANNIÈRE CTA SÉANCE GRATUITE (index.php) ---- */
+/* ---- BANNIÈRE CTA SÉANCE GRATUITE — visible uniquement pour les visiteurs non connectés ---- */
 .cta-gratuit-banner {
-    background: linear-gradient(135deg, #1a365d 0%, #2d3748 60%, #2d7a6b 100%);
-    padding: 70px 20px;
+    background: linear-gradient(135deg, #2c5f5a 0%, #4a7f7a 50%, #2c5f5a 100%);
+    padding: 90px 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -11,80 +11,109 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 20% 50%, rgba(56,178,172,0.15) 0%, transparent 55%),
-                radial-gradient(ellipse at 80% 30%, rgba(255,255,255,0.04) 0%, transparent 50%);
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(212,165,116,0.15) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 30%, rgba(255,255,255,0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.cta-gratuit-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="p" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect fill="url(%23p)" width="100" height="100"/></svg>') repeat;
     pointer-events: none;
 }
 
 .cta-gratuit-banner__inner {
     position: relative;
     z-index: 1;
-    max-width: 720px;
+    max-width: 750px;
     margin: 0 auto;
 }
 
 .cta-gratuit-banner__badge {
     display: inline-block;
-    background: rgba(56, 178, 172, 0.25);
-    color: #81e6d9;
+    background: rgba(212, 165, 116, 0.2);
+    color: #d4a574;
     font-weight: 700;
-    font-size: 13px;
-    padding: 5px 16px;
+    font-size: 12px;
+    padding: 7px 18px;
     border-radius: 999px;
-    letter-spacing: 0.6px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(56, 178, 172, 0.4);
+    letter-spacing: 0.8px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(212, 165, 116, 0.4);
+    text-transform: uppercase;
 }
 
 .cta-gratuit-banner h2 {
     color: white;
-    font-size: 36px;
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
     font-weight: 700;
-    margin: 0 0 16px;
+    margin: 0 0 18px;
     line-height: 1.25;
     text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    letter-spacing: -0.5px;
 }
 
 .highlight-green {
-    color: #68d391;
+    color: #d4a574;
 }
 
 .cta-gratuit-banner p {
-    color: rgba(255,255,255,0.85);
+    color: rgba(255,255,255,0.9);
     font-size: 17px;
-    margin: 0 0 30px;
-    line-height: 1.7;
+    margin: 0 0 35px;
+    line-height: 1.75;
+    font-weight: 300;
 }
 
 .cta-banner-btn {
     display: inline-block;
-    background: linear-gradient(135deg, #38b2ac, #2d7a6b);
-    color: white;
+    background: #d4a574;
+    color: #2c5f5a;
     font-weight: 700;
-    font-size: 18px;
-    padding: 16px 40px;
-    border-radius: 12px;
+    font-size: 16px;
+    padding: 14px 36px;
+    border-radius: 6px;
     text-decoration: none;
-    box-shadow: 0 6px 24px rgba(56,178,172,0.4);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(212, 165, 116, 0.35);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
     letter-spacing: 0.3px;
+    border: none;
+    cursor: pointer;
 }
 
 .cta-banner-btn:hover {
-    background: linear-gradient(135deg, #2d7a6b, #1e5a4a);
+    background: #e8c5a0;
     transform: translateY(-3px);
-    box-shadow: 0 10px 32px rgba(56,178,172,0.5);
+    box-shadow: 0 12px 32px rgba(212, 165, 116, 0.45);
 }
 
 .cta-banner-note {
     font-size: 13px !important;
-    color: rgba(255,255,255,0.5) !important;
-    margin: 16px 0 0 !important;
+    color: rgba(255,255,255,0.6) !important;
+    margin: 18px 0 0 !important;
     letter-spacing: 0.3px;
+    font-weight: 300;
 }
 
 @media (max-width: 768px) {
-    .cta-gratuit-banner h2 { font-size: 26px; }
-    .cta-gratuit-banner p  { font-size: 15px; }
-    .cta-banner-btn        { font-size: 16px; padding: 14px 28px; }
+    .cta-gratuit-banner {
+        padding: 60px 25px;
+    }
+
+    .cta-gratuit-banner h2 {
+        font-size: 28px;
+    }
+
+    .cta-gratuit-banner p {
+        font-size: 15px;
+    }
+
+    .cta-banner-btn {
+        font-size: 15px;
+        padding: 12px 28px;
+    }
 }
