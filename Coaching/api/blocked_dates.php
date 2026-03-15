@@ -6,7 +6,7 @@ $stmt = $pdo->prepare("SELECT day_of_week, start_time, end_time FROM schedule_fr
 $stmt->execute();
 $rules = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Récupérer toutes les dates bloquées
+// Récupérer toutes les dates bloquées (vacances, etc...) et appointements déjà pris
 $stmt = $pdo->prepare("SELECT start_date, end_date FROM block_dates");
 $stmt->execute();
 $blocks = $stmt->fetchAll(PDO::FETCH_ASSOC);
