@@ -26,7 +26,7 @@
 
 <script>
 
-    fetch("/api/blocked-dates")
+    fetch("/Coaching/api/blocked_dates.php")
     .then(res => res.json())
     .then(blockedDates => {
 
@@ -43,9 +43,13 @@
             function(date) {
                 // Désactive samedi dimanche
                 return (date.getDay() === 0 || date.getDay() === 6);
-            }
+            },
+            ...blockedDates.map(date => new Date(date))
         ],
     });
+
+    });
+
 </script>
 
 
