@@ -3,7 +3,7 @@ session_start();
 
 // Protection : rediriger vers connexion si pas connecté
 if (empty($_SESSION['utilisateur_id'])) {
-    header('Location: Auth/connexion.php');
+    header('Location: ' . $base . 'Auth/connexion.php');
     exit;
 }
 
@@ -16,7 +16,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$user) {
     session_destroy();
-    header('Location: Auth/connexion.php');
+    header('Location: ' . $base . 'Auth/connexion.php');
     exit;
 }
 
@@ -31,10 +31,11 @@ $age = $naissance->diff(new DateTime())->y;
 $succes = $_SESSION['succes'] ?? '';
 unset($_SESSION['succes']);
 
+$base = '';
 include('includes/header.php');
 ?>
 
-<link rel="stylesheet" href="/Style/dashboard.css">
+<link rel="stylesheet" href="<?php echo $base; ?>Style/dashboard.css">
 
 <main class="dashboard">
 
@@ -47,7 +48,7 @@ include('includes/header.php');
     <!-- Bannière de bienvenue -->
     <div class="dashboard-hero">
         <div class="dashboard-avatar">
-            <?php echo strtoupper(mb_substr($user['prenom'], 0, 1) . mb_substr($user['nom'], 0, 1)); ?>
+            <?php echo strtoupper(dashboard . phpmb_substr($user['prenom'], 0, 1) . mb_substr($user['nom'], 0, 1)); ?>
         </div>
         <div class="dashboard-hero-text">
             <h2>Bonjour, <?php echo htmlspecialchars($user['prenom']); ?> 👋</h2>

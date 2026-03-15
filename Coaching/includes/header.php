@@ -1,6 +1,7 @@
 <?php
 // session_start() est appelé par chaque page appelante avant cet include
 $connecte = !empty($_SESSION['utilisateur_id']);
+$base = $base ?? '';
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +12,7 @@ $connecte = !empty($_SESSION['utilisateur_id']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Site de coaching personnel - Réalisez vos rêves et passez à l'action.">
     <title>Rendez vos Rêves Réalité - Coaching</title>
-    <link rel="stylesheet" href="/Style/style.css">
+    <link rel="stylesheet" href="<?php echo $base; ?>Style/style.css">
 </head>
 
 <body>
@@ -24,15 +25,15 @@ $connecte = !empty($_SESSION['utilisateur_id']);
 
         <nav class="menu">
 
-            <a href="/Coaching/index.php">Accueil</a>
-            <a href="/Coaching/Qui_suis_je.php">Qui suis-je</a>
+            <a href="<?php echo $base; ?>index.php">Accueil</a>
+            <a href="<?php echo $base; ?>Qui_suis_je.php">Qui suis-je</a>
 
             <?php if ($connecte): ?>
-                <a href="/Coaching/dashboard.php">Mon profil</a>
-                <a href="/Coaching/Rdv.php" class="btn-rdv">Prendre RDV</a>
+                <a href="<?php echo $base; ?>dashboard.php">Mon profil</a>
+                <a href="<?php echo $base; ?>Rdv.php" class="btn-rdv">Prendre RDV</a>
             <?php else: ?>
-                <a href="/Coaching/Auth/connexion.php">Connexion</a>
-                <a href="/Coaching/RdvGratuit.php" class="btn-rdv btn-rdv--gratuit">🎁 Séance gratuite</a>
+                <a href="<?php echo $base; ?>Auth/connexion.php">Connexion</a>
+                <a href="<?php echo $base; ?>RdvGratuit.php" class="btn-rdv btn-rdv--gratuit">🎁 Séance gratuite</a>
             <?php endif; ?>
 
         </nav>

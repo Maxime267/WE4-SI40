@@ -12,10 +12,11 @@ $old_naissance = $_SESSION['old_naissance'] ?? '';
 unset($_SESSION['erreurs'], $_SESSION['old_email'], $_SESSION['old_nom'],
       $_SESSION['old_prenom'], $_SESSION['old_naissance']);
 
+$base = '../';
 include('../includes/header.php');
 ?>
 
-<link rel="stylesheet" href="../Style/connexion.css">
+<link rel="stylesheet" href="<?php echo $base; ?>Style/connexion.css">
 <section class="contact">
 
     <h2>Inscription</h2>
@@ -104,5 +105,5 @@ include('../includes/header.php');
 
 </section>
 
-<script src="../Script/password.js"></script>
+<script src="<?php echo $base; ?>Script/password.js"></script>
 <?php include('../includes/footer.php'); ?>

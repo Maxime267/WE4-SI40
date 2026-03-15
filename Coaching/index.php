@@ -1,11 +1,12 @@
 <?php
 session_start();
+$base = '';
 $succes = $_SESSION['succes'] ?? '';
 unset($_SESSION['succes']);
 include("includes/header.php");
 ?>
 
-<link rel="stylesheet" href="/Style/index.css">
+<link rel="stylesheet" href="<?php echo $base; ?>Style/index.css">
 
 <?php if ($succes): ?>
     <div style="background:#f0fff4; border:1px solid #68d391; border-radius:8px; padding:12px 20px; margin:20px 40px; color:#276749; font-size:14px; font-weight:500;">
@@ -20,7 +21,7 @@ include("includes/header.php");
         <div class="cta-gratuit-banner__badge">🎁 Offre de bienvenue</div>
         <h2>Commencez par une séance découverte <span class="highlight-green">100% gratuite</span></h2>
         <p>30 minutes offertes, sans engagement, pour explorer comment le coaching peut transformer votre quotidien.</p>
-        <a href="/RdvGratuit.php" class="cta-banner-btn">Réserver ma séance gratuite →</a>
+        <a href="<?php echo $base; ?>RdvGratuit.php" class="cta-banner-btn">Réserver ma séance gratuite →</a>
         <p class="cta-banner-note">Aucun compte requis · Annulation libre · En visioconférence</p>
     </div>
 </section>

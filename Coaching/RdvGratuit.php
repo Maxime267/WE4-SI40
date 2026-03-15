@@ -81,9 +81,12 @@ for ($i = 0; $i < 30; $i++) {
     }
 }
 ?>
-<?php include 'includes/header.php'; ?>
+<?php
+$base = '';
+include 'includes/header.php';
+?>
 
-<link rel="stylesheet" href="/Style/rdv_gratuit.css">
+<link rel="stylesheet" href="<?php echo $base; ?>Style/rdv_gratuit.css">
 
 <main>
 
@@ -181,7 +184,7 @@ for ($i = 0; $i < 30; $i++) {
 
             <p style="font-size:13px; color:#718096; margin-top: 15px; text-align:center;">
                 Vous avez déjà un compte ?
-                <a href="/Auth/connexion.php" style="color:#38b2ac; font-weight:600;">Connectez-vous</a>
+                <a href="<?php echo $base; ?>Auth/connexion.php" style="color:#38b2ac; font-weight:600;">Connectez-vous</a>
                 pour accéder à votre espace personnel.
             </p>
         </form>

@@ -1,10 +1,11 @@
 <?php
 session_start();
+$base = '';
 include 'includes/header.php';
 ?>
 
 <!-- CSS spécifique à cette page -->
-<link rel="stylesheet" href="Style/qui_suis_je.css">
+<link rel="stylesheet" href="<?php echo $base; ?>Style/qui_suis_je.css">
 
 <main>
 
@@ -35,7 +36,7 @@ include 'includes/header.php';
                     Aujourd'hui, j'accompagne des particuliers et des professionnels à clarifier leurs objectifs,
                     surmonter leurs freins et passer à l'action concrètement.
                 </p>
-                <a href="/WE4-SI40/Rdv.php" class="cta-link">Prendre rendez-vous →</a>
+                <a href="<?php echo $base; ?>Rdv.php" class="cta-link">Prendre rendez-vous →</a>
             </div>
 
         </div>
@@ -114,7 +115,7 @@ include 'includes/header.php';
     <section class="cta-section">
         <h2>Prêt(e) à passer à l'action ?</h2>
         <p>Réservez votre séance préliminaire gratuite — sans engagement, sans pression.</p>
-        <a href="/WE4-SI40/Rdv.php" class="cta">📅 Réserver ma séance gratuite</a>
+        <a href="<?php echo $base; ?>Rdv.php" class="cta">📅 Réserver ma séance gratuite</a>
     </section>
 
 </main>

@@ -10,9 +10,12 @@ $succes_inscription = isset($_GET['inscription']) && $_GET['inscription'] === 's
 unset($_SESSION['erreurs'], $_SESSION['old_email']);
 ?>
 
-<?php include('../includes/header.php'); ?>
+<?php
+$base = '../';
+include('../includes/header.php');
+?>
 
-<link rel="stylesheet" href="../Style/connexion.css">
+<link rel="stylesheet" href="<?php echo $base; ?>Style/connexion.css">
 <section class="contact">
 
     <h2>Connexion</h2>
@@ -70,5 +73,5 @@ unset($_SESSION['erreurs'], $_SESSION['old_email']);
 
 </section>
 
-<script src="../Script/password.js"></script>
+<script src="<?php echo $base; ?>Script/password.js"></script>
 <?php include('../includes/footer.php'); ?>

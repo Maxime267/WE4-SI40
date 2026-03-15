@@ -1,5 +1,6 @@
 <?php
 session_start();
+$base = '';
 
 // ✅ Connexion à la base de données
 require_once 'db.php';
@@ -8,7 +9,7 @@ require_once 'db.php';
 if (empty($_SESSION['utilisateur_id'])) {
     // Sauvegarder l'URL de destination pour rediriger après login
     $_SESSION['redirect_after_login'] = '/Rdv.php';
-    header('Location: /Auth/connexion.php');
+    header('Location: ' . $base . 'Auth/connexion.php');
     exit;
 }
 
@@ -21,7 +22,7 @@ $userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$userInfo) {
     // Session invalide, déconnecter
     session_destroy();
-    header('Location: /Auth/connexion.php');
+    header('Location: ' . $base . 'Auth/connexion.php');
     exit;
 }
 
