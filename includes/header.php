@@ -24,15 +24,15 @@ $connecte = !empty($_SESSION['utilisateur_id']);
 
         <nav class="menu">
 
-            <a href="/index.php">Accueil</a>
-            <a href="/Qui_suis_je.php">Qui suis-je</a>
+            <a href="/Coaching/index.php">Accueil</a>
+            <a href="/Coaching/Qui_suis_je.php">Qui suis-je</a>
 
             <?php if ($connecte): ?>
-                <a href="/dashboard.php">Mon profil</a>
-                <a href="/Rdv.php" class="btn-rdv">Prendre RDV</a>
+                <a href="/Coaching/dashboard.php">Mon profil</a>
+                <a href="/Coaching/Rdv.php" class="btn-rdv">Prendre RDV</a>
             <?php else: ?>
-                <a href="/Auth/connexion.php">Connexion</a>
-                <a href="/RdvGratuit.php" class="btn-rdv btn-rdv--gratuit">🎁 Séance gratuite</a>
+                <a href="/Coaching/Auth/connexion.php">Connexion</a>
+                <a href="/Coaching/RdvGratuit.php" class="btn-rdv btn-rdv--gratuit">🎁 Séance gratuite</a>
             <?php endif; ?>
 
         </nav>

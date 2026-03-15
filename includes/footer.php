@@ -3,7 +3,7 @@
 
 <footer class="site-footer">
 
-    <p>© 2026 - Rendez-vous rêve réalité</p>
+    <p>© 2026 - Rendez vos rêves réalités</p>
 
 </footer>
 
